@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.png">
+
+    <title>Not Sure About your PASSword ?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="nsapass.css" rel="stylesheet">
+</head>
+
+<body>
+    <main role="main" class="container">
+        <div class="checker-template">
+            <h1>Not Sure About your PASSword ?</h1>
+            <p class="lead">This website is use to check your password against known leaks referenced by Have I Been Pwned. The database used is an offline version hosted on your local environment. Your password is not sent, only a partial SHA-1 hash is sent on your local network.
+            </p>
+        </div>
+
+        <div class="input-group mb-1">
+            <input id="inputPwd" type="password" class="form-control" placeholder="Password to test" aria-label="Mot de passe à tester" aria-describedby="password-input1">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="checkPwd();">Pwned ?</button>
+                <button class="btn btn-outline-secondary" type="button" onclick="generatePassword(12);">Generate (12)</button>
+                <button class="btn btn-outline-secondary" type="button" onclick="generatePassword(16);">Generate (16)</button>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div id="pwdStrength" class="progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+            </div>
+        </div>
+
+        <div id="resultGen">
+            <div class="alert alert-primary" role="alert">
+                Generated password : <code id="genPwd"></code>
+            </div>
+        </div>
+        <div id="resultCheckKo">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Erf, your password has been leaked !</h4>
+                <p>
+                    <div id="errorDetails"></div>
+                </p>
+                </input>
+            </div>
+        </div>
+        <div id="resultCheckOk">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Yeah !</h4>
+                <p>Password not found in known leaks ;-)</p>
+                </input>
+            </div>
+        </div>
+        </p>
+        <div id="passwordIndicator">
+            <div class="alert alert-secondary" role="alert">
+                <h4 class="alert-heading">Some thoughts about your password...</h4>
+                <p>
+                    <span id="possibilities" class="reset"></span>
+                </p>
+                <p>
+					Time to crack the password, using Hashcat on a GTX 1060 6GB :
+                </p>
+                <p>
+                    <span id="rates" class="reset"></span>
+                </p>
+            </div>
+        </div>
+
+        <p>
+            <div class="alert alert-light" role="alert">
+                Some password recommendations from <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP</a> :<br>
+
+				<ol type="1">
+					<li>Password Length
+						<ul>
+							<li>Longer passwords provide a greater combination of characters and consequently make it more difficult for an attacker to guess.</li>
+							<li>Minimum length of the passwords should be enforced by the application.</li>
+							<li>   Passwords shorter than 10 characters are considered to be weak (NIST SP800-132).</li>
+							<li>While minimum length enforcement may cause problems with memorizing passwords among some users, applications should encourage them to set passphrases (sentences or combination of words) that can be much longer than typical passwords and yet much easier to remember.</li>
+							<li>Maximum password length should not be set too low, as it will prevent users from creating passphrases. Typical maximum length is 128 characters.</li>
+							<li>Passphrases shorter than 20 characters are usually considered weak if they only consist of lower case Latin characters.</li>
+						</ul>
+					</li>
+					<li>Password Complexity
+						<ul>
+							<li>Password must meet at least 3 out of the following 4 complexity rules
+								<ul>
+									<li>at least 1 uppercase character (A-Z)</li>
+									<li> at least 1 lowercase character (a-z)</li>
+									<li>at least 1 digit (0-9)</li>
+									<li>at least 1 special character (punctuation) — do not forget to treat space as special characters too</li>
+								</ul>
+							<li>at least 10 characters
+							<li>at most 128 characters
+							<li>not more than 2 identical characters in a row (e.g., 111 not allowed)
+						</ul>
+					</li>
+				</ol>
+            </div>
+	    <div id="metaInfo"></div>
+
+    </main>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="></script>
+    <script src="./popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"></script>
+    <script src="./bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"></script>
+    <script src="./nsapass.js"></script>
+</body>
+
+</html>
