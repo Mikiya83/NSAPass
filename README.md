@@ -1,5 +1,5 @@
-# Description
-Not Sure About your PASSword est un outil à usage interne pour tester si votre mot de passe est un mot de passe qui a fuité dans une ou plusieurs brèches rendues publiques.  
+# NSA Pass
+_Not Sure About your PASSword_ est un outil à usage interne pour tester si votre mot de passe est un mot de passe qui a fuité dans une ou plusieurs brèches rendues publiques.  
 L'outil est un fork local de https://haveibeenpwned.com/Passwords  
 Les données sont transmises uniquement sur le réseau local une fois configuré, au format hashé sha1, et dans une connexion sécurisée. Aucune donnée n'est enregistrée à l'exception d'un compteur de requêtes afin de mesurer l'intérêt de l'outil sur votre réseau.  
 
