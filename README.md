@@ -4,7 +4,6 @@ L'outil est un fork local de https://haveibeenpwned.com/Passwords
 Les données sont transmises uniquement sur le réseau local une fois configuré, au format hashé sha1, et dans une connexion sécurisée. Aucune donnée n'est enregistrée à l'exception d'un compteur de requêtes afin de mesurer l'intérêt de l'outil sur votre réseau.  
 
 ![Cat](../assets/home.png)
-![Cat](../assets/good.png)
 ![Cat](../assets/fail.png)
 
 # Installation
@@ -25,6 +24,9 @@ Puis configurer la base de donnée mysql
 Enfin mettre à jour le mot de passe dans le fichier `www/config.ini`  
 
 ## Import de la base des mots de passe
+Le fichier qui les contient est trouvable sur le site original https://haveibeenpwned.com/Passwords , suivre les instructions en bas.
+Attention il est volumineux !
+
 Le format du fichier d'import doit être de la forme :  
 > \<hash\>:\<occurence\>  
 
