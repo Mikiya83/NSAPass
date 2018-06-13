@@ -20,7 +20,7 @@
 	if (isset($_GET["password"])){
 		$pwdPrefix = $_GET["password"];
 		$filteredPwd = cleanPwdInput($pwdPrefix);
-		$results = retrieveHashes($db, $dbPassword, $filteredPwd);
+		$results = retrieveHashes($db, $dbPassword, $dbMeta, $filteredPwd);
 		printHashesRes($results);
 	} else {
 		$results = retrieveMeta($db, $dbMeta);

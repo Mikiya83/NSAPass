@@ -34,12 +34,14 @@ function checkInDb(hashedPwd, lengthPwdGenerate) {
     var suffix = hashedPwd.substring(5, hashedPwd.length).toUpperCase();
 
     $.get("check.php?password=" + prefix, function(response) {
-        var splitted = response.split("\n");
-        if (splitted.length == 0) {
-		$("#resultCheckOk").show();
-                $("#resultCheckKo").hide();
-		return;
-	}
+        var splitted = response.split('/');
+		if (splitted.length == 0) {
+			$("#resultCheckOk").show();
+			$("#resultCheckKo").hide();
+			return;
+		}
+
+		var found = false;
         for (i = 0; i < splitted.length; i++) {
             var line = splitted[i].split(":");
             if (line[0] == suffix) {
@@ -55,14 +57,15 @@ function checkInDb(hashedPwd, lengthPwdGenerate) {
                 if (typeof lengthPwdGenerate !== 'undefined') {
                     generatePassword(lengthPwdGenerate);
                 }
-
-                break;
-            } else {
-                $("#resultCheckOk").show();
-                $("#resultCheckKo").hide();
-            }
+			found = true;
+            break;
+            } 
         }
-	getMetaInf();
+		if (!found) {
+			$("#resultCheckOk").show();
+			$("#resultCheckKo").hide();
+		}
+		getMetaInf();
     });
 }
 

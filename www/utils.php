@@ -3,7 +3,7 @@
 
 	class pwdResult {
 		public $hashPwd;
-		public $counter;
+		public $count;
 	}
 	
 	class metaResult {
@@ -47,7 +47,7 @@
 	function printHashesRes($results) {
 		global $SEPARATOR;
 		foreach ($results as $resValue){
-			echo $resValue->hash,$SEPARATOR,$resValue->counter,PHP_EOL;
+			echo substr($resValue->hash, 5),$SEPARATOR,$resValue->count,'/';
 		}
 	}
 	
@@ -59,11 +59,19 @@
 		return $results;
 	}
 	
-	function retrieveHashes($db, $dbPassword, $filteredPwdHash){
+	function retrieveHashes($db, $dbPassword, $dbMeta, $filteredPwdHash){
 		$sql = 'SELECT * FROM '.$dbPassword.' WHERE hash LIKE ?';
 		$sth = $db->prepare($sql);
 		$sth->execute(array($filteredPwdHash.'%'));
 		$results = $sth->fetchAll(PDO::FETCH_CLASS, "pwdResult");
+		
+		// Increment meta
+		$resMeta = retrieveMeta($db,$dbMeta);
+		$cnt = ($resMeta[0]->req_count)+1;
+		$sqlMeta = 'UPDATE '.$dbMeta.' SET req_count = ? WHERE id = ?';
+		$sthMeta = $db->prepare($sqlMeta);
+		$sthMeta->execute(array($cnt, $resMeta[0]->id));
+		
 		return $results;
 	}
 ?>
