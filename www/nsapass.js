@@ -53,7 +53,7 @@ function checkInDb(hashedPwd, lengthPwdGenerate) {
                 bar.setAttribute("class", "progress-bar bg-danger");
                 bar.setAttribute("style", "width:25%");
                 bar.setAttribute("aria-valuenow", "25");
-                bar.innerHTML = "Mauvais !";
+                bar.innerHTML = "Bad !";
                 if (typeof lengthPwdGenerate !== 'undefined') {
                     generatePassword(lengthPwdGenerate);
                 }
