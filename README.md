@@ -30,7 +30,12 @@ Attention il est volumineux !
 Le format du fichier d'import doit être de la forme :  
 > \<hash\>:\<occurence\>  
 
-et doit être importé directement sur le serveur avec la requête suivante  
+On crée d'abord les tables vides:
+
+>CREATE TABLE IF NOT EXISTS password (hash VARCHAR(40) NOT NULL PRIMARY KEY, count INT UNSIGNED);
+>CREATE TABLE IF NOT EXISTS meta (req_count INT UNSIGNED, db_version VARCHAR(5), nb_password INT UNSIGNED);
+
+Ensuite le fichier doit être importé directement sur le serveur avec la requête suivante  
 > USE nsapass;  
 > LOAD DATA INFILE 'pwned-passwords-ordered-2.0.txt' REPLACE INTO TABLE password FIELDS TERMINATED BY ':';  
 
