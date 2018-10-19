@@ -198,7 +198,7 @@ function strengthMeter(passwordFieldId) {
     if (password.length > 0) {
         $("#passwordIndicator").show();
         $("#pwdStrength").show();
-        $("#possibilities").html(numberWithCommas(strength) + " possibilities");
+        $("#possibilities").html(strength.toLocaleString() + " possibilities");
         $("#rates").html(rates);
     } else {
         $("#passwordIndicator").hide();
