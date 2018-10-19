@@ -234,11 +234,6 @@ function strengthMeter(passwordFieldId) {
 
 }
 
-// thanks http://stackoverflow.com/questions/2901102/how-to-print-number-with-commas-as-thousands-separators-in-javascript
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 // thanks http://stackoverflow.com/questions/8211744/convert-milliseconds-or-seconds-into-human-readable-form
 function secondsToStr(seconds) {
     // TIP: to find current time in milliseconds, use:
@@ -247,7 +242,7 @@ function secondsToStr(seconds) {
     var numyears = Math.floor(seconds / 31536000);
     if (numyears) {
         if (numyears < 21000000) {
-            return numberWithCommas(numyears) + ' year' + ((numyears > 1) ? 's' : '');
+            return numyears.toLocaleString() + ' year' + ((numyears > 1) ? 's' : '');
         } else {
             return "More than age of univers...";
         }
